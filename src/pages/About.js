@@ -6,7 +6,7 @@ function About() {
   return (
     <>
       <NavBar />
-      <div className=" md:ml-[260px] items-center  bg-white border border-gray-200 rounded-lg">
+      <div className=" sm:ml-[260px] items-center  bg-white border border-gray-200 rounded-lg">
         <div className="flex flex-col items-center pb-10">
           <img
             className="w-32 h-32 mb-3 mt-5 rounded-full lg-shadow"

@@ -1,10 +1,9 @@
 import React from "react";
-import { useParams, useNavigate, Route } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import NavBar from "../components/NavBar";
 import MoveTable from "../components/MoveTable";
 import Button from "../components/Button";
 import Chart from "react-apexcharts";
-import NotFound from "./NotFound";
 
 function PokeDetails({ pokemon, favourites, addFavsHandler, stringFormatter }) {
   const { id } = useParams();
@@ -69,7 +68,7 @@ function PokeDetails({ pokemon, favourites, addFavsHandler, stringFormatter }) {
   return (
     <>
       <NavBar></NavBar>
-      <div className="lg:ml-[260px]">
+      <div className="sm:ml-[260px]">
         <h1 className=" mt-4 font-bold text-5xl mb-5 text-center">
           {stringFormatter(pokeItem.name)}
           <Button

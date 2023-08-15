@@ -66,7 +66,7 @@ function Home({
 
           {/* Main */}
           <div
-            className="md:ml-[260px] grid lg:grid-cols-4 gap-2 md:grid-cols-2 bg-white"
+            className="sm:ml-[260px] grid lg:grid-cols-4 gap-2 md:grid-cols-2 bg-white"
             id="pokemonList"
           >
             {/* {(pokemon.length === 0)  && <p>No Pokemon Found!</p>} */}

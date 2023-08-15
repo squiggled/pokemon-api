@@ -16,7 +16,7 @@ function Favourites({
       {/* {favourites} */}
       <h1 className="text-center mt-2 font-bold text-5xl">Favourites</h1>
       <div
-        className="md:ml-[260px] grid lg:grid-cols-4 gap-2 md:grid-cols-2 bg-white"
+        className="sm:ml-[260px] grid lg:grid-cols-4 gap-2 md:grid-cols-2 bg-white"
         id="favsList"
       >
         {favourites.map((x) =>
