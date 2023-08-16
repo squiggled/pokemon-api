@@ -27,7 +27,7 @@ function Favourites({
               id="pokemonCard"
             >
               <NavLink 
-                    to={`pokemon/${x.id}`} 
+                    to={`/pokemon/${x.id}`} 
                     key={x.id}>
               <img
                 key={x}
