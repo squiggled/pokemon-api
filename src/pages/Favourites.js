@@ -5,6 +5,7 @@ import Button from "../components/Button";
 import { NavLink } from "react-router-dom";
 
 function Favourites({
+  pokemon,
   favourites,
   setFavourites,
   addFavsHandler,
@@ -25,24 +26,22 @@ function Favourites({
               className="text-center p-2 border-2 border-gray-200 border-dashed rounded-lg m-3 "
               id="pokemonCard"
             >
-              {/* <NavLink 
-                    to={`/${x.id}`} 
-                    state={{stateParam: pokemon}}
-                    key={x.id}> */}
+              <NavLink 
+                    to={`pokemon/${x.id}`} 
+                    key={x.id}>
               <img
                 key={x}
                 src={x.sprites.other["official-artwork"]["front_default"]}
                 alt={x.name}
               />
-              {/* </NavLink> */}
+              </NavLink>
               <span className="font-bold text-xl mb-5">
-                {/* <NavLink 
-                    to={`/${x.id}`} 
-                    state={{stateParam: pokemon}}
+                <NavLink 
+                    to={`/pokemon/${x.id}`} 
                     key={x.id}
-                    >  */}
+                    > 
                 #{x.id} {stringFormatter(x.species.name)}
-                {/* </NavLink>  */}
+                </NavLink> 
               </span>
               <br></br>
 

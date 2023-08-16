@@ -144,6 +144,7 @@ function App() {
           exact path="/favourites"
           element={
             <Favourites
+              pokemon={pokemon}
               favourites={favourites}
               setFavourites={setFavourites}
               addFavsHandler={addFavsHandler}
