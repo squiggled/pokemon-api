@@ -15,7 +15,7 @@ function About() {
           />
 
           <span className="text-md text-gray-500 dark:text-gray-400">
-            PokeDex built by squiggled using PokeAPI and React.
+            PokeDex built by karen using PokeAPI and React.
           </span>
           <div className="flex mt-4 space-x-3 md:mt-6">
             <button
