@@ -92,7 +92,7 @@ function Home({
                     state={{ stateParam: pokemon }}
                     key={x.id}
                   >
-                    #{x.id} {stringFormatter(x.species.name)}
+                    {stringFormatter(x.species.name)} 
                   </NavLink>
                 </span>
                 <br></br>

@@ -70,7 +70,7 @@ function PokeDetails({ pokemon, favourites, addFavsHandler, stringFormatter }) {
       <NavBar></NavBar>
       <div className="sm:ml-[260px]">
         <h1 className=" mt-4 font-bold text-5xl mb-5 text-center">
-          {stringFormatter(pokeItem.name)}
+          {stringFormatter(pokeItem.name)} #{pokeItem.id}
           <Button
             className="inline-flex items-center px-3 py-2 ml-6 -mt-2 text-sm font-medium text-center text-white  bg-blue-700 rounded-lg hover:bg-blue-800  0 focus:ring-2 focus:outline-none focus:ring-blue-300 dark:bg-blue-700 dark:hover:bg-blue-800 dark:focus:ring-yellow-500"
             id={pokeItem.id}
@@ -78,20 +78,22 @@ function PokeDetails({ pokemon, favourites, addFavsHandler, stringFormatter }) {
             addFavsHandler={addFavsHandler}
           />
         </h1>
-
-        <div className="grid grid-cols-2">
-          <img
-            className="mt-3 p-2 border-2 max-w-sm border-gray-200 border-dashed rounded-lg m-3"
-            src={pokeItem.sprites.other["official-artwork"]["front_default"]}
-            alt={pokeItem.name}
-          ></img>
-          <Chart
-            className="grid"
-            options={data.options}
-            series={data.series}
-            type="bar"
-            width={500}
-          />
+        <div className="grid lg:grid-cols-2 md:grid-cols-1">
+          <div className="grid ">
+            <img
+              className="mt-3 p-2 border-2 max-w-sm border-gray-200 border-dashed rounded-lg m-3"
+              src={pokeItem.sprites.other["official-artwork"]["front_default"]}
+              alt={pokeItem.name}
+            ></img>
+            </div>
+            <div className="grid ">
+            <Chart
+              options={data.options}
+              series={data.series}
+              type="bar"
+              width={500}
+            />
+          </div>
         </div>
         <MoveTable pokeItem={pokeItem} stringFormatter={stringFormatter} />
       </div>
