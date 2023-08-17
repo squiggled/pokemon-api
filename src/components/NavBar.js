@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 
 function NavBar() {
   return (
-    <div id="navbar">
+    <div className="sm:shrink" id="navbar">
       <button
         data-drawer-target="default-sidebar"
         data-drawer-toggle="default-sidebar"

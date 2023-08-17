@@ -42,16 +42,21 @@ function Home({
 
       {/* Logo and header */}
       <div className="w-fit" id="main">
-        <NavLink to="/">
-          <img id="logo" src={logo} alt="logo"></img>
-        </NavLink>
-        <h1 className="text-center font-bold text-xl">Team Builder</h1>
-        {pokemon.length === 0 ? (
-          <h4 className="text-center">no pokemon loaded </h4>
-        ) : (
-          <h4 className="text-center"> {pokemon.length} wild Pokémon found</h4>
-        )}
-        {results > 1 && <p>About {results} results found</p>}
+        <div className="sm:ml-[280px] lg:ml-[0px] " id="logo-header">
+          <NavLink to="/">
+            <img id="logo" src={logo} alt="logo"></img>
+          </NavLink>
+          <h1 className="text-center font-bold text-xl">Team Builder</h1>
+          {pokemon.length === 0 ? (
+            <h4 className="text-center">no pokemon loaded </h4>
+          ) : (
+            <h4 className="text-center">
+              {" "}
+              {pokemon.length} wild Pokémon found
+            </h4>
+          )}
+          {results > 1 && <p>About {results} results found</p>}
+        </div>
 
         <div id="main">
           {/* Search */}
@@ -66,13 +71,13 @@ function Home({
 
           {/* Main */}
           <div
-            className="sm:ml-[260px] grid lg:grid-cols-4 gap-2 md:grid-cols-2 bg-white"
+            className="sm:ml-[260px] grid lg:grid-cols-4 gap-2 sm:grid-cols-2 xs:basis-1/2 bg-white"
             id="pokemonList"
           >
             {/* {(pokemon.length === 0)  && <p>No Pokemon Found!</p>} */}
             {pokemon.map((x) => (
               <div
-                className="text-center p-2 border-2 border-gray-200 border-dashed rounded-lg m-3 "
+                className=" text-center p-2 border-2 border-gray-200 border-dashed rounded-lg m-3 "
                 id="pokemonCard"
               >
                 <NavLink
@@ -80,7 +85,7 @@ function Home({
                   state={{ stateParam: pokemon }}
                   key={x.id}
                 >
-                  <img
+                  <img className=""
                     key={x}
                     alt={x.name}
                     src={x.sprites.other["official-artwork"]["front_default"]}
@@ -92,7 +97,7 @@ function Home({
                     state={{ stateParam: pokemon }}
                     key={x.id}
                   >
-                    {stringFormatter(x.species.name)} 
+                    {stringFormatter(x.species.name)}
                   </NavLink>
                 </span>
                 <br></br>

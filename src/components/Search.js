@@ -8,7 +8,7 @@ function Search({
 }) {
   return (
     // flex justify-center items-center min-w-[50%]
-    <form className="mt-3 mb-3 ml-[360px] max-width-[60%]" id="search">
+    <form className="mt-3 mb-3  md:ml-[320px] sm:ml-[270px] xs:w-auto md:w-7/12 lg:w-8/12" id="search">
       <label
         for="default-search"
         className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"

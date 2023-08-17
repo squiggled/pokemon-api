@@ -81,7 +81,7 @@ function PokeDetails({ pokemon, favourites, addFavsHandler, stringFormatter }) {
         <div className="grid lg:grid-cols-2 md:grid-cols-1">
           <div className="grid ">
             <img
-              className="mt-3 p-2 border-2 max-w-sm border-gray-200 border-dashed rounded-lg m-3"
+              className="lg:ml-[80px] mt-3 p-2 border-2 max-w-sm border-gray-200 border-dashed rounded-lg m-3"
               src={pokeItem.sprites.other["official-artwork"]["front_default"]}
               alt={pokeItem.name}
             ></img>

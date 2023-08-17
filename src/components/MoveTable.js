@@ -1,9 +1,9 @@
 function MoveTable({ pokeItem, stringFormatter }) {
   return (
-    <div>
-      <table className="table-auto w-full text-xs border border-collapse">
-        <thead>
-          <tr>
+    <div className="flex justify-center">
+      <table className="table-auto w-3/5 text-xs  items-center border border-collapse">
+        <thead className=" bg-gray-300 font-bold text-xl">
+          <tr > 
             <th className="px-4 py-2 border font-semibold">Level</th>
             <th className="px-4 py-2 border font-semibold">Move</th>
             {/* <th className="px-4 py-2 border font-semibold">Type</th>
@@ -13,7 +13,7 @@ function MoveTable({ pokeItem, stringFormatter }) {
             <th className="px-4 py-2 border font-semibold">PP</th> */}
           </tr>
         </thead>
-        <tbody>
+        <tbody className="text-lg">
           {/* Level */}
           {pokeItem["moves"].map((x) => (
             <tr className="text-center" id="move">
