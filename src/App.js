@@ -58,35 +58,19 @@ function App() {
     }
   };
 
-  // const handleSearch = async (searchInput) => {
-  //   try {
-  //     const response = await api(`${BASE_URL}pokemon?limit=2000`); //get all pokemon
-  //     const pokeFound = await response.json(); //convert to json
-  //     console.log(pokeFound.data);
-  //     const pokeToShow = pokeFound.filter(pokemon => pokemon.name.toLowerCase().includes(searchInput)); //filter thru all pokemon with input
-  //     function(allpokemon){
-  //       allpokemon.results.forEach(function(pokemon){
-  //         fetchPokemonData(pokemon);
-  //       })
-  //      }
-  //     setResults(pokeToShow.data.count);
-  //   } catch (error) {
-  //     console.log(error.message);
-  //   }
-  // };
 
-  async function handleSearch(name) {
-    const response = await fetch(`${BASE_URL}pokemon/${name}`);
-    const responseText = await response.text();
-
-    if (responseText === "Not Found") {
-      console.log("no pokemon found!");
-      return;
-    }
-    const jsonData = JSON.parse(responseText);
-    setPokemon([]);
-    jsonData.url = `${BASE_URL}pokemon/${name}`;
-    fetchPokemonData(response);
+  async function handleSearch(input) {
+    const response = await fetch(`${BASE_URL}pokemon?limit=1008`); //get all pokemon
+    const allPokemon = await response.json(); //convert to json
+    console.log("list of all pokemon", allPokemon);
+    const pokeToShow = allPokemon.results.filter((e) => e.name.toLowerCase().includes(input.toLowerCase()));
+    console.log("list of found pokemon in search", pokeToShow);
+    pokeToShow.forEach(function(pokemon) {
+      console.log("pokeid", pokemon);
+      const jsonData = pokemon;
+      setPokemon([]);
+      fetchPokemonData(jsonData);
+    });
   }
 
   const submitSearch = () => {
@@ -99,7 +83,6 @@ function App() {
       letter.toUpperCase()
     );
     return finalSentence;
-    // return newStr[0].toUpperCase() + newStr.substring(1);
   };
 
   return (
@@ -129,7 +112,8 @@ function App() {
           }
         />
         <Route
-          exact path="/pokemon/:id"
+          exact
+          path="/pokemon/:id"
           element={
             <PokeDetails
               pokemon={pokemon}
@@ -141,7 +125,8 @@ function App() {
           }
         />
         <Route
-          exact path="/favourites"
+          exact
+          path="/favourites"
           element={
             <Favourites
               pokemon={pokemon}
@@ -153,8 +138,8 @@ function App() {
           }
         />
         <Route exact path="/about" element={<About />} />
-        
-        <Route path="*" element={<NotFound />} /> 
+
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );
