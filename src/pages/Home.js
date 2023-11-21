@@ -1,6 +1,6 @@
 import "../App.css";
 import logo from "../img/logo.png";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import NavBar from "../components/NavBar";
 import Button from "../components/Button";
@@ -21,7 +21,10 @@ function Home({
   fetchLoadMore,
   fetchInitialPokemon,
   stringFormatter,
+  offSet,
+  loading,
 }) {
+
   let initialLoad = true;
 
   useEffect(() => {
@@ -30,6 +33,35 @@ function Home({
       initialLoad = false;
     }
   }, []);
+
+  //for infinite scroll
+  function debounce(func, wait) {
+    let timeout;
+  
+    return function executedFunction(...args) {
+      const later = () => {
+        clearTimeout(timeout);
+        func(...args);
+      };
+  
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+    };
+  };
+
+  //debounced > throttling 
+  //prevent too many rapid calls to api
+  const debouncedFetchLoadMore = debounce(() => {
+    if (window.innerHeight + document.documentElement.scrollTop >= document.documentElement.offsetHeight - 100 && !loading) {
+      fetchLoadMore();
+    }
+  }, 500); // 500ms delay
+
+  useEffect(() => {
+    window.addEventListener('scroll', debouncedFetchLoadMore);
+    return () => window.removeEventListener('scroll', debouncedFetchLoadMore);
+  }, [offSet, loading]);
+
 
   return (
     <div className="" id="App">
@@ -112,10 +144,10 @@ function Home({
             ))}
           </div>
           <div className="flex justify-center">
-            <LoadButton
+            {/* <LoadButton
               className="px-3 py-2 lg:ml-[260px] mb-6 text-xl font-bold text-center text-black rounded-lg focus:outline-none bg-white border border-gray-800 focus:ring-2  focus:ring-blue-300 "
               fetchLoadMore={fetchLoadMore}
-            />
+            /> */}
           </div>
         </div>
       </div>

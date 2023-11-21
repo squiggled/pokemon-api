@@ -15,6 +15,8 @@ function App() {
   const [favourites, setFavourites] = useState([]);
   const [favouritesCount, setFavouritesCount] = useState(0);
   const [offSet, setOffSet] = useState(20);
+  const [loading, setLoading] = useState(false); //to prevent continuously loading the same next 20 pokemon
+
 
   function fetchPokemonData(pokemon) {
     let url = pokemon.url; // <--- save pokemon url to a variable
@@ -35,7 +37,22 @@ function App() {
       });
   }
 
-  function fetchLoadMore() {
+  // function fetchLoadMore() {
+  //   fetch(`${BASE_URL}pokemon?limit=20&offset=${offSet}`)
+  //     .then((response) => response.json())
+  //     .then(function (allpokemon) {
+  //       setOffSet((prevState) => prevState + 20);
+  //       allpokemon.results.forEach(function (pokemon) {
+  //         fetchPokemonData(pokemon);
+  //       });
+  //     });
+  // }
+
+  const fetchLoadMore = () => {
+    // Prevent multiple simultaneous loads
+    if (loading) return;
+
+    setLoading(true);
     fetch(`${BASE_URL}pokemon?limit=20&offset=${offSet}`)
       .then((response) => response.json())
       .then(function (allpokemon) {
@@ -43,8 +60,9 @@ function App() {
         allpokemon.results.forEach(function (pokemon) {
           fetchPokemonData(pokemon);
         });
+        setLoading(false);
       });
-  }
+  };
 
   const addFavsHandler = (id) => {
     const pokeFav = pokemon.find((item) => item.id === Number(id));
@@ -110,6 +128,8 @@ function App() {
               fetchInitialPokemon={fetchInitialPokemon}
               fetchLoadMore={fetchLoadMore}
               stringFormatter={stringFormatter}
+              offSet={offSet}
+              loading={loading}
             />
           }
         />
